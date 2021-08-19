@@ -24,7 +24,7 @@ export async function getImagesList() {
 export async function getImageWithTag(tag) {
   let results = [];
   // https://danbooru.donmai.us/posts.json?tags=order%3Arank+nude
-  let arr = await fetch('https://danbooru.donmai.us/posts.json?tags=order%3Arank+' + encodeURIComponent(tag), {
+  let arr = await fetch('https://danbooru.donmai.us/posts.json?tags=' + encodeURIComponent(tag), {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
   })
   .then(res => res.json())
