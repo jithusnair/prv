@@ -26,7 +26,6 @@
 	let randomValue = Math.random();
 
 	function setTimer() {
-		console.log(urls);
 		timer = setInterval(() => {
 			randomValue = Math.random();
 			src = urls[count];
@@ -139,7 +138,7 @@
 	.mainImage {
 		z-index: 1;
 		position: absolute;
-		top: 50%;
+		top: 55%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		max-width: 80%;
