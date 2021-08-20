@@ -3,6 +3,8 @@
 
 	let loadOptions = loadOptions2;
 
+	let randomValue = 0;
+
 	function loadOptions1(filterText) {
 		filterText = filterText ? filterText.replace(' ', '_') : '';
 
@@ -43,23 +45,26 @@
 	const items = ['contains', 'exact'];
 
 	function onSelect(event) {
-		if (event.detail === 'contains') {
+		if (event.detail.value === 'contains') {
 			loadOptions = loadOptions1;
 		} else {
 			loadOptions = loadOptions2;
 		}
+		randomValue = Math.random();
 	}
 </script>
 
 <div class="container">
-	<Select
-		{loadOptions}
-		{optionIdentifier}
-		{getSelectionLabel}
-		{getOptionLabel}
-		placeholder="Search for tags"
-		on:select
-	/>
+	{#key randomValue}
+		<Select
+			{loadOptions}
+			{optionIdentifier}
+			{getSelectionLabel}
+			{getOptionLabel}
+			placeholder="Search for tags"
+			on:select
+		/>
+	{/key}
 
 	<Select
 		{items}
@@ -77,5 +82,6 @@
 		column-gap: 10px;
 		align-items: center;
 		grid-template-columns: 300px 300px 100px;
+		z-index: 2;
 	}
 </style>
