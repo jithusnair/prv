@@ -29,12 +29,11 @@
 		console.log(urls);
 		timer = setInterval(() => {
 			randomValue = Math.random();
+			src = urls[count];
 			count++;
 			if (count === urls.length) {
 				count = 0;
 			}
-			src = urls[count];
-			console.log(src, count);
 		}, 5000);
 	}
 
@@ -75,6 +74,14 @@
 		clearInterval(timer);
 		setTimer();
 	}
+
+	async function handleClick() {
+		urls = await getImageWithTag('order:rank');
+		count = 0;
+
+		clearInterval(timer);
+		setTimer();
+	}
 </script>
 
 {#key randomValue}
@@ -100,13 +107,12 @@
 {/key}
 
 <div class="tags">
-	<SelectTags on:select={handleSelect} />
+	<SelectTags on:select={handleSelect} on:click={handleClick} />
 </div>
 
 <style>
 	.container,
-	.tags,
-	h1 {
+	.tags {
 		position: absolute;
 		height: 100%;
 	}
@@ -117,6 +123,7 @@
 	}
 
 	h1 {
+		position: absolute;
 		margin: 0;
 		top: 50%;
 		left: 50%;
@@ -124,9 +131,9 @@
 	}
 
 	.tags {
-		width: 300px;
-		left: 0;
+		left: 50%;
 		top: 0;
+		transform: translateX(-50%);
 	}
 
 	.mainImage {
