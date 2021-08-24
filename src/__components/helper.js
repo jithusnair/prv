@@ -3,8 +3,8 @@ export async function getImagesList() {
   let url = ''
   for (const page of [1,2,3,4,5]) {
     try {
-      if(page === 1) url = `https://danbooru.donmai.us/posts.json?tags=order%3Arank+yaoi`
-      else url = `https://danbooru.donmai.us/posts.json?tags=order%3Arank+yaoi&page=${page}`
+      if(page === 1) url = `https://danbooru.donmai.us/posts.json?tags=dominatrix`
+      else url = `https://danbooru.donmai.us/posts.json?tags=dominatrix&page=${page}`
 
       let arr = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
